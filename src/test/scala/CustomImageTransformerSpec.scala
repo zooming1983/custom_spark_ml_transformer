@@ -6,19 +6,14 @@ class CustomImageTransformerSpec extends AnyFunSuite with SparkSessionProvider {
     setupSparkSession("custom_ml_transformer")
     val sparkSession = spark
     import sparkSession.implicits._
-    val df = sparkSession.sparkContext.binaryFiles("src/test/data/").map { case (fileName, pds) => {
+    val df = sparkSession.sparkContext.binaryFiles("src/test/data/").map { case (_, pds) => {
       pds.toArray()
     }
     }.toDF("image")
 
     val myTransformer = new CustomImageTransformer("myTest")
+    myTransformer.setInputCol("image").setOutputCol("width")
     val tf = myTransformer.transform(df)
     tf.show()
-
   }
-
-
-
-
-
 }
