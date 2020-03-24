@@ -1,9 +1,9 @@
-import java.io.{ByteArrayInputStream, File}
+import java.io.ByteArrayInputStream
 
 import javax.imageio.ImageIO
 import org.apache.spark.ml.Transformer
+import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.ml.param.shared.{HasInputCol, HasOutputCol}
-import org.apache.spark.ml.param.{Param, ParamMap}
 import org.apache.spark.sql.functions.{col, udf}
 import org.apache.spark.sql.types.{DataTypes, IntegerType, StructField, StructType}
 import org.apache.spark.sql.{DataFrame, Dataset}

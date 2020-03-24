@@ -15,5 +15,8 @@ class CustomImageTransformerSpec extends AnyFunSuite with SparkSessionProvider {
     myTransformer.setInputCol("image").setOutputCol("width")
     val tf = myTransformer.transform(df)
     tf.show()
+
+    assert(tf.columns.length == 2, "have added width to image  columns")
+    assert(tf.columns.contains("width"))
   }
 }
